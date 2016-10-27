@@ -1,0 +1,79 @@
+/*!
+ * Start Bootstrap - Creative Bootstrap Theme (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+(function($) {
+    "use strict"; // Start of use strict
+
+    // jQuery for page scrolling feature - requires jQuery Easing plugin
+    $('a.page-scroll').bind('click', function(event) {
+        var $anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: ($($anchor.attr('href')).offset().top - 50)
+        }, 1250, 'easeInOutExpo');
+        event.preventDefault();
+    });
+
+    // Highlight the top nav as scrolling occurs
+    $('body').scrollspy({
+        target: '.navbar-fixed-top',
+        offset: 51
+    })
+
+    // Closes the Responsive Menu on Menu Item Click
+    $('.navbar-collapse ul li a').click(function() {
+        $('.navbar-toggle:visible').click();
+    });
+
+    // Fit Text Plugin for Main Header
+    $("h1").fitText(
+        1.2, {
+            minFontSize: '35px',
+            maxFontSize: '65px'
+        }
+    );
+
+    // Offset for Main Navigation
+    $('#mainNav').affix({
+        offset: {
+            top: 100
+        }
+    })
+
+    // Initialize WOW.js Scrolling Animations
+    new WOW().init();
+
+    $(document).ready(function(){
+        var logo = $('.navbar-header > a.navbar-brand > div.patrick');
+        var logonmg = $('.navbar-header > a.navbar-brand > div.nmg');
+        var navbard = $('#mainNav');
+        //        $('.navbar').hide();
+        logo.hide();
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 200) {
+                logo.fadeIn(500);
+                logonmg.hide()
+            } else {
+                logo.hide();
+                logonmg.fadeIn(500);
+            }
+        });
+    })
+
+
+//    $(document).ready(function(){
+//    var logo = $('.navbar-header > a.navbar-brand');
+//    var y = $(document).scrollTop();
+//        logo.hide();
+//    if (y >= 100) {
+////        header.addClass('fixed');
+//        logo.show();
+//    } else {
+////        header.removeClass('fixed');
+//        logo.hide();
+//    }
+//    });
+
+})(jQuery); // End of use strict
